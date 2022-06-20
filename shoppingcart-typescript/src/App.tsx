@@ -1,13 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as 
 
-function App() {
+React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import './App.css';
+import { Cart } from './components/cart/Cart';
+import { HomePage }  from './components/home/HomePage';
+import './App.css';
+import  CartProvider  from './store/CartProvider';
+import Checkout from './components/Checkout';
+
+const  App = () => {
   return (
-    <div className="App">
-     <h1>HelloOO!</h1>
+    <div>
+      <CartProvider>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
+        </Routes>
+      </CartProvider>
     </div>
   );
 }
 
 export default App;
+
