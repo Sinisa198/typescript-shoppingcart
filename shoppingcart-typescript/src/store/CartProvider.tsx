@@ -42,7 +42,7 @@ export function cartReducer (state:any, action:any) {
     const updatedTotalAmount = state.totalAmount  -  existingItem.amount * existingItem.price;
     let updatedItems;
     if (existingItem.amount ) {
-      updatedItems = state.items.filter((item:productInterface) => item.id !== action.id);
+      updatedItems = state.items.filter((item:any) => item.id !== action.id);
     }
 
     return {
@@ -64,7 +64,7 @@ const CartProvider = (props:any) => {
     dispatchCartAction({ type: 'ADD', item });
   };
 
-  const removeItemFromCartHandler = (id:number) => {
+  const removeItemFromCartHandler = (id:any) => {
     dispatchCartAction({ type: 'REMOVE', id });
   };
 

@@ -3,21 +3,24 @@ import  { useContext, useState } from 'react';
 import favorite from '../../assets/images/favorite.png';
 import favoriteBorder from '../../assets/images/favorite-border.png';
 import CartContext from '../../store/CartContex';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface productInterface  {
   name: string,
   price: number,
   id: number,
   image:string,
-  amount: number
 }
 
 export function ProductItem({ name, id, price, image }: productInterface): JSX.Element {
 
   const [product, setProducts] = useState(1) ;
   const cartCtx = useContext(CartContext);
+  const notify = () => toast("You have added a product to the cart");
   const addToCartHandler = (amount:any) => {
     amount.preventDefault()
+    notify();
     cartCtx.addItem({
       id: id ,
       name: name,
@@ -82,6 +85,7 @@ export function ProductItem({ name, id, price, image }: productInterface): JSX.E
           <a className='add-to-cart btn' href='' onClick={addToCartHandler} >
             ADD TO CART
           </a>
+          <ToastContainer />
           <div className='heart'>
             <img
               src={favorite}

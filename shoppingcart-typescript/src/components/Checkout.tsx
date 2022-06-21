@@ -6,8 +6,11 @@ import  CartProvider   from '../store/CartProvider';
 import './cart/cartItem.css'
 import { NavBar } from './navBars/NavBar';
 import { Footer } from './Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Checkout() {
+  const checkoutNotify = () => toast("Success pay!");
   const cartCtx = useContext(CartContext);
   const totalPrice = `$${cartCtx.totalAmount.toFixed(2)}`;
 
@@ -30,9 +33,10 @@ export function Checkout() {
                     <h1 className='checkout_total_price'>
                       Total price : {totalPrice}
                     </h1>
-                    <a className='checkout-button' href='' >
+                    <a className='checkout-button' href='' onClick={checkoutNotify()}>
                        Pay
                     </a>
+                    <ToastContainer />
                     <div className='row cards__wrapper'></div>
                   </div>
                 </div>

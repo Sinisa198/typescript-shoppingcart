@@ -5,8 +5,8 @@ import { ProductItem } from './ProductItem';
 import { NavBar } from '../navBars/NavBar';
 import { Footer } from '../Footer'
 
+
  interface homeInterface  {
-    amount: number;
     name: string,
     price: number,
     id: number,
@@ -16,10 +16,8 @@ import { Footer } from '../Footer'
 export function HomePage () {
     const [products, setProducts] = useState([])
 
-
     const fetchAndDisplay = async () =>{
     let url = 'http://127.0.0.1:3500/products';
-    console.log('fdaf')
     const res = await fetch(url);
     const products = await res.json();
     setProducts(products)
@@ -40,15 +38,14 @@ export function HomePage () {
                   <span className='pretitle'>SHOP</span>
                   <h2 className='section-title'>SAME OLD SAME OLD</h2>
                   <div className='row cards__wrapper'>
-
-                      {products ?? [].map((item:homeInterface) => (
+                      
+                      {products.map((item:homeInterface) => (
                       <ProductItem
                         key={item.id}
                         name={item.name}
                         id={item.id}
                         price={item.price}
                         image={item.image}
-                        amount={item.amount}
                       />
                     ))}
 

@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 import CartContext from '../../store/CartContex';
 import  CartItem  from '../CartItem';
 import {NavBarForCart} from '../navBars/NavBarForCart'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Cart  (cart:any, setCart:any) {
-
+  const removeNotify = () => toast("You remove item from cart!");
   const cartCtx = useContext(CartContext);
   const totalPrice = `$${cartCtx.totalAmount.toFixed(2)}`;
   const { items } = cartCtx;
 	
   const cartItemRemoveHandler = ( item:any) => {
     cartCtx.removeItem(item.id);
-
+    removeNotify();
 
   };
   return (
@@ -52,6 +53,7 @@ export function Cart  (cart:any, setCart:any) {
                     {items.map((item:any) => {
                       return <CartItem key={item.id} item={item} remove={cartItemRemoveHandler} />;
                     })}
+                     <ToastContainer />
                   </div>
                 </div>
               </div>
