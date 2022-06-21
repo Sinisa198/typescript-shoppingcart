@@ -1,30 +1,24 @@
 import  { useContext, useState } from 'react';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import favorite from '../../assets/images/favorite.png';
 import favoriteBorder from '../../assets/images/favorite-border.png';
 import CartContext from '../../store/CartContex';
 
-export interface ProductItem{
-    name:string,
-    id:number,
-    price:number,
-    image:any
-    amount:number
+export interface productInterface  {
+  name: string,
+  price: number,
+  id: number,
+  image:string
 }
 
-export function ProductItem ({ name, id, price, image }:ProductItem) {
+export function ProductItem({ name, id, price, image }: productInterface): JSX.Element {
 
   const [product, setProducts] = useState(1) ;
-  const notify = () => toast("You have added a product to the cart");
   const cartCtx = useContext(CartContext);
-
-  const addToCartHandler = (amount) => {
-    amount.preventDefault();
-    notify();
+  const addToCartHandler = (amount:any) => {
+    amount.preventDefault()
     cartCtx.addItem({
-      id: id,
+      id: id ,
       name: name,
       price: price,
       image: image,
@@ -76,7 +70,6 @@ export function ProductItem ({ name, id, price, image }:ProductItem) {
               </button>
               <button
                 className='quantity-remove js-dec quantity-button'
-                min='0'
                 onClick={handleDecremente}
               >
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
@@ -88,7 +81,6 @@ export function ProductItem ({ name, id, price, image }:ProductItem) {
           <a className='add-to-cart btn' href='' onClick={addToCartHandler} >
             ADD TO CART
           </a>
-        <ToastContainer />
           <div className='heart'>
             <img
               src={favorite}

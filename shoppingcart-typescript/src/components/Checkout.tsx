@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
 import CartContext from '../store/CartContex';
-import {useContext} from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react'
 
-import  CartProvider  from '../store/CartProvider';
+import  CartProvider   from '../store/CartProvider';
 import './cart/cartItem.css'
 import { NavBar } from './navBars/NavBar';
 import { Footer } from './Footer';
 
 export function Checkout() {
-  const checkoutNotify = () => toast("Success pay!");
   const cartCtx = useContext(CartContext);
   const totalPrice = `$${cartCtx.totalAmount.toFixed(2)}`;
 
@@ -33,10 +30,9 @@ export function Checkout() {
                     <h1 className='checkout_total_price'>
                       Total price : {totalPrice}
                     </h1>
-                    <a className='checkout-button' href='' onClick={checkoutNotify()}>
+                    <a className='checkout-button' href='' >
                        Pay
                     </a>
-                    <ToastContainer />
                     <div className='row cards__wrapper'></div>
                   </div>
                 </div>
