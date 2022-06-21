@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { ProductItem } from './ProductItem';
 import { NavBar } from '../navBars/NavBar';
 import { Footer } from '../Footer'
- 
+
  interface homeInterface  {
+    amount: number;
     name: string,
     price: number,
     id: number,
@@ -13,13 +14,16 @@ import { Footer } from '../Footer'
   }
 
 export function HomePage () {
-    console.log('sgfag')
     const [products, setProducts] = useState([])
+
+
     const fetchAndDisplay = async () =>{
-    let url = 'http://127.0.0.1:5000/products';
+    let url = 'http://127.0.0.1:3500/products';
+    console.log('fdaf')
     const res = await fetch(url);
     const products = await res.json();
     setProducts(products)
+    
   }
     useEffect(() => {fetchAndDisplay()}, [])
   return (
@@ -37,13 +41,14 @@ export function HomePage () {
                   <h2 className='section-title'>SAME OLD SAME OLD</h2>
                   <div className='row cards__wrapper'>
 
-                      {products?.map((item:homeInterface) => (
+                      {products ?? [].map((item:homeInterface) => (
                       <ProductItem
                         key={item.id}
                         name={item.name}
                         id={item.id}
                         price={item.price}
                         image={item.image}
+                        amount={item.amount}
                       />
                     ))}
 

@@ -8,7 +8,8 @@ export interface productInterface  {
   name: string,
   price: number,
   id: number,
-  image:string
+  image:string,
+  amount: number
 }
 
 export function ProductItem({ name, id, price, image }: productInterface): JSX.Element {

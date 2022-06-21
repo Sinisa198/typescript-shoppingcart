@@ -12,7 +12,7 @@ export function cartReducer (state:any, action:any) {
       state.totalAmount + action.item.price * action.item.amount;
 
     const existingCartItemIndex = state.items.findIndex(
-      (item:any) => item.id === action.item.id
+      (item:productInterface) => item.id === action.item.id
     );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
@@ -60,7 +60,7 @@ const CartProvider = (props:any) => {
     defaultCartState
   );
 
-  const addItemToCartHandler = (item:string) => {
+  const addItemToCartHandler = (item:productInterface) => {
     dispatchCartAction({ type: 'ADD', item });
   };
 

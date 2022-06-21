@@ -9,6 +9,7 @@ import Checkout from './components/Checkout';
 export function App()  {
   return (
     <div>
+      <BrowserRouter>
       <CartProvider>
         <Routes>
           <Route path='/' element={<HomePage />} />
@@ -16,6 +17,7 @@ export function App()  {
           <Route path='/checkout' element={<Checkout />} />
         </Routes>
       </CartProvider>
+      </BrowserRouter>
     </div>
   );
 }
