@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
  interface propsCartItem {
     remove: any,
     item: any
+    id:any
   }
   
-export default function CartItem ({ item, remove }: propsCartItem){
+export default function CartItem ({ item, remove, id}: propsCartItem){
   return (
     <div className='row cart__wrapper'>
       <div key={item.id} className='cart__item'>
@@ -20,7 +21,7 @@ export default function CartItem ({ item, remove }: propsCartItem){
           <Link
             className='btn btn--sm'
             to=''
-            onClick={(event:React.MouseEvent<HTMLElement>) => remove(event.target as any, item)}
+            onClick={(event:React.MouseEvent<HTMLElement>) => remove(item, id)}
           >
             REMOVE FROM CART
           </Link>

@@ -10,7 +10,7 @@ import { Footer } from '../Footer'
     name: string,
     price: number,
     id: number,
-    image:string
+    image:string,
   }
 
 export function HomePage () {

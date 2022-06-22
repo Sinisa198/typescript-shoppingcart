@@ -13,7 +13,7 @@ export function Cart  (cart:any, setCart:any) {
   const totalPrice = `$${cartCtx.totalAmount.toFixed(2)}`;
   const { items } = cartCtx;
 	
-  const cartItemRemoveHandler = ( item:any) => {
+  const cartItemRemoveHandler = (item:any) => {
     cartCtx.removeItem(item.id);
     removeNotify();
 
@@ -51,7 +51,7 @@ export function Cart  (cart:any, setCart:any) {
                       </div>
                     </div>
                     {items.map((item:any) => {
-                      return <CartItem key={item.id} item={item} remove={cartItemRemoveHandler} />;
+                      return <CartItem key={item.id} item={item} id={item.id} remove={cartItemRemoveHandler} />;
                     })}
                      <ToastContainer />
                   </div>

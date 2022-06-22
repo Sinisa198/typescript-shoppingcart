@@ -4,7 +4,7 @@ import { Cart } from './components/cart/Cart';
 import { HomePage }  from './components/home/HomePage';
 import './App.css';
 import  CartProvider  from './store/CartProvider';
-import Checkout from './components/Checkout';
+import { Checkout} from './components/Checkout';
 
 export function App()  {
   return (
