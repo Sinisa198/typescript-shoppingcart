@@ -1,45 +1,46 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CartContext from '../store/CartContex';
-import { useContext } from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import CartContext from "../store/CartContex";
+import { useContext } from "react";
 
-import  CartProvider   from '../store/CartProvider';
-import './cart/cartItem.css'
-import { NavBar } from './navBars/NavBar';
-import { Footer } from './Footer';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import CartProvider from "../store/CartProvider";
+import "./cart/cartItem.css";
+import { NavBar } from "./navBars/NavBar";
+import { Footer } from "./Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-export function Checkout () {
-
-  const checkoutNotify:any = () => toast("Success pay!");
+export function Checkout() {
+  const checkoutNotify: any = () => toast("Success pay!");
   const cartCtx = useContext(CartContext);
   const totalPrice = `$${cartCtx.totalAmount.toFixed(2)}`;
   return (
-
     <CartProvider>
-        <NavBar />
-      <div id='page' className='site'>
-        <Link className='skip-link screen-reader-text' to='#content'>
+      <NavBar />
+      <div id="page" className="site">
+        <Link className="skip-link screen-reader-text" to="#content">
           Skip to content
         </Link>
-        <div id='content' className='site-content'>
-          <div id='primary' className='content-area'>
-            <main id='main' className='site-main'>
-              <div className='cards'>
-                <div className='wrap'>
-                  <div className='cards__container'>
-                    <span className='pretitle'>SHOP</span>
-                    <h2 className='section-title'>SAME OLD SAME OLD</h2>
-                    <h1 className='checkout_total_price'>
+        <div id="content" className="site-content">
+          <div id="primary" className="content-area">
+            <main id="main" className="site-main">
+              <div className="cards">
+                <div className="wrap">
+                  <div className="cards__container">
+                    <span className="pretitle">SHOP</span>
+                    <h2 className="section-title">SAME OLD SAME OLD</h2>
+                    <h1 className="checkout_total_price">
                       Total price : {totalPrice}
                     </h1>
-                    <a className='checkout-button' href='' onClick={checkoutNotify()}>
-                       Pay
+                    <a
+                      className="checkout-button"
+                      href=""
+                      onClick={checkoutNotify()}
+                    >
+                      Pay
                     </a>
-                    <ToastContainer />
-                    <div className='row cards__wrapper'></div>
+                    <ToastContainer limit={1} />
+                    <div className="row cards__wrapper"></div>
                   </div>
                 </div>
               </div>
@@ -47,11 +48,10 @@ export function Checkout () {
           </div>
         </div>
         <div></div>
-       <Footer />
+        <Footer />
       </div>
     </CartProvider>
   );
 }
 
 export default Checkout;
-
