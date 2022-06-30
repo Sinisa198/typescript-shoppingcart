@@ -25,9 +25,9 @@ export function NavBarForCart() {
           <nav className="main-nav">
             <ul className="main-nav__list" role="menubar">
               <li className="main-nav__list-item" role="menuitem">
-                <Link to="/favorite" className="main-nav__list-link">
+                <Link to="" className="main-nav__list-link">
                   <img src={logoHeader} alt="" className="header__logo" />
-                  FAVORITE
+                  ABOUT US
                 </Link>
               </li>
               <li className="main-nav__list-item" role="menuitem">

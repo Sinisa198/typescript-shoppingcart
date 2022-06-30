@@ -4,18 +4,18 @@ import { useState, useEffect } from "react";
 import { ProductItem } from "./ProductItem";
 import { NavBar } from "../navBars/NavBar";
 import { Footer } from "../Footer";
+
 interface homeInterface {
   name: string;
   price: number;
   id: number;
   image: string;
-  url: string;
 }
 
 export function HomePage() {
   const [products, setProducts] = useState([]);
   const fetchAndDisplay = async () => {
-    let url = process.env.BASE_APP_URL + "/products";
+    let url = "http://127.0.0.1:3500/products";
     const res = await fetch(url);
     const products = await res.json();
     setProducts(products);

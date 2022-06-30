@@ -1,28 +1,24 @@
-import { Routes, Route } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Cart } from "./components/cart/Cart";
 import { HomePage } from "./components/home/HomePage";
+import "./App.css";
 import CartProvider from "./store/CartProvider";
-import Checkout from "./components/Checkout";
-import Favorite from "./components/favorite/Favorite";
-import FavoriteProvider from "./store/FavoriteProvider";
-
-const App = () => {
+import { Checkout } from "./components/Checkout";
+import { Favorite } from "./components/Favorite";
+export function App() {
   return (
     <div>
-      <CartProvider>
-        <FavoriteProvider>
+      <BrowserRouter>
+        <CartProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
             <Route path="/favorite" element={<Favorite />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
-        </FavoriteProvider>
-      </CartProvider>
+        </CartProvider>
+      </BrowserRouter>
     </div>
   );
-};
-
-export default App;
+}
