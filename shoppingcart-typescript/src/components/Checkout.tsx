@@ -32,14 +32,10 @@ export function Checkout() {
                     <h1 className="checkout_total_price">
                       Total price : {totalPrice}
                     </h1>
-                    <a
-                      className="checkout-button"
-                      href=""
-                      onClick={checkoutNotify()}
-                    >
+                    <a className="checkout-button" onClick={checkoutNotify}>
                       Pay
                     </a>
-                    <ToastContainer limit={1} />
+                    <ToastContainer />
                     <div className="row cards__wrapper"></div>
                   </div>
                 </div>
